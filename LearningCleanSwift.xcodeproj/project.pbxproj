@@ -151,12 +151,12 @@
 		9026A0181DD42B210068A51F /* CreateOrder */ = {
 			isa = PBXGroup;
 			children = (
-				9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */,
-				9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */,
-				9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */,
-				9026A02A1DD42B6F0068A51F /* CreateOrderPresenter.swift */,
-				9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */,
 				9026A02C1DD42B6F0068A51F /* CreateOrderViewController.swift */,
+				9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */,
+				9026A02A1DD42B6F0068A51F /* CreateOrderPresenter.swift */,
+				9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */,
+				9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */,
+				9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */,
 				9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */,
 			);
 			name = CreateOrder;

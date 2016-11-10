@@ -12,9 +12,21 @@
 import UIKit
 
 struct CreateOrder {
-    struct Something {
-        struct Request {}
-        struct Response {}
-        struct ViewModel {}
+    
+    struct FormatExpirationDate {
+        
+        struct Request {
+            var date: Date
+        }
+        
+        struct Response {
+            var date: Date
+        }
+        
+        struct ViewModel {
+            var date: String
+        }
+        
     }
+    
 }

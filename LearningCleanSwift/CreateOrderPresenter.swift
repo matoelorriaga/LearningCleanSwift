@@ -12,24 +12,32 @@
 import UIKit
 
 protocol CreateOrderPresenterInput {
-    func presentSomething(response: CreateOrder.Something.Response)
+    func presentExpirationDate(response: CreateOrder.FormatExpirationDate.Response)
 }
 
 protocol CreateOrderPresenterOutput: class {
-    func displaySomething(viewModel: CreateOrder.Something.ViewModel)
+    func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel)
 }
 
 class CreateOrderPresenter: CreateOrderPresenterInput {
     
     weak var output: CreateOrderPresenterOutput!
     
-    // MARK: - Presentation logic
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
     
-    func presentSomething(response: CreateOrder.Something.Response) {
+    // MARK: - Present something
+    
+    func presentExpirationDate(response: CreateOrder.FormatExpirationDate.Response) {
         // NOTE: Format the response from the Interactor and pass the result back to the View Controller
         
-        let viewModel = CreateOrder.Something.ViewModel()
-        output.displaySomething(viewModel: viewModel)
+        let date = dateFormatter.string(from: response.date)
+        let viewModel = CreateOrder.FormatExpirationDate.ViewModel(date: date)
+        output.displayExpirationDate(viewModel: viewModel)
     }
     
 }

@@ -12,14 +12,15 @@
 import UIKit
 
 protocol CreateOrderViewControllerInput {
-    func displaySomething(viewModel: CreateOrder.Something.ViewModel)
+    func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel)
 }
 
 protocol CreateOrderViewControllerOutput {
-    func doSomething(request: CreateOrder.Something.Request)
+    var shippingMethods: [String] { get }
+    func formatExpirationDate(request: CreateOrder.FormatExpirationDate.Request)
 }
 
-class CreateOrderViewController: UITableViewController, CreateOrderViewControllerInput, UITextFieldDelegate {
+class CreateOrderViewController: UITableViewController, CreateOrderViewControllerInput, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var output: CreateOrderViewControllerOutput!
     var router: CreateOrderRouter!
@@ -27,9 +28,26 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     let shippingMethodPicker = UIPickerView()
     let expirationDatePicker = UIDatePicker()
     
+    // MARK: - Outlets
+    
     @IBOutlet var textFields: [UITextField]!
     @IBOutlet weak var shippingMethodTextField: UITextField!
     @IBOutlet weak var expirationDateTextField: UITextField!
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath) {
+            for textField in textFields {
+                if textField.isDescendant(of: cell) {
+                    textField.becomeFirstResponder()
+                }
+            }
+        }
+    }
+    
+    // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let index = textFields.index(of: textField) {
@@ -43,18 +61,25 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
         return false
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if let cell = tableView.cellForRow(at: indexPath) {
-            for textField in textFields {
-                if textField.isDescendant(of: cell) {
-                    textField.becomeFirstResponder()
-                }
-            }
-        }
+    // MARK: - UIPickerViewDataSource
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func expirationDatePickerValueChanged(datePicker: UIDatePicker) {}
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return output.shippingMethods.count
+    }
+    
+    // MARK: - UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return output.shippingMethods[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        shippingMethodTextField.text = output.shippingMethods[row]
+    }
     
     // MARK: - Object lifecycle
     
@@ -63,34 +88,43 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
         CreateOrderConfigurator.sharedInstance.configure(viewController: self)
     }
     
-    // MARK: - View lifecycle
+    // MARK: - UIViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for textField in textFields {
-            textField.delegate = self
-        }
-        expirationDatePicker.addTarget(self, action: #selector(CreateOrderViewController.expirationDatePickerValueChanged(datePicker:)), for: .valueChanged)
-        
         doSomethingOnLoad()
     }
     
-    // MARK: - Event handling
+    func expirationDatePickerValueChanged(datePicker: UIDatePicker) {
+        let date = datePicker.date
+        let request = CreateOrder.FormatExpirationDate.Request(date: date)
+        output.formatExpirationDate(request: request)
+    }
+    
+    // MARK: - Do something on load
     
     func doSomethingOnLoad() {
         // NOTE: Ask the Interactor to do some work
         
-        let request = CreateOrder.Something.Request()
-        output.doSomething(request: request)
+        for textField in textFields {
+            textField.delegate = self
+        }
+        shippingMethodPicker.delegate = self
+        shippingMethodPicker.dataSource = self
+        shippingMethodTextField.inputView = shippingMethodPicker
+        
+        expirationDatePicker.datePickerMode = .date
+        expirationDatePicker.addTarget(self, action: #selector(CreateOrderViewController.expirationDatePickerValueChanged(datePicker:)), for: .valueChanged)
+        expirationDateTextField.inputView = expirationDatePicker
     }
     
-    // MARK: - Display logic
+    // MARK: - Display something
     
-    func displaySomething(viewModel: CreateOrder.Something.ViewModel) {
+    func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel) {
         // NOTE: Display the result from the Presenter
         
-        // nameTextField.text = viewModel.name
+        let date = viewModel.date
+        expirationDateTextField.text = date
     }
     
 }
