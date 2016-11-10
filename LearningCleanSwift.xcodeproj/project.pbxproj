@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		90269FE71DD42B0D0068A51F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90269FE61DD42B0D0068A51F /* AppDelegate.swift */; };
-		90269FE91DD42B0D0068A51F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90269FE81DD42B0D0068A51F /* ViewController.swift */; };
 		90269FEC1DD42B0D0068A51F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90269FEA1DD42B0D0068A51F /* Main.storyboard */; };
 		90269FEF1DD42B0D0068A51F /* LearningCleanSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90269FED1DD42B0D0068A51F /* LearningCleanSwift.xcdatamodeld */; };
 		90269FF11DD42B0D0068A51F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90269FF01DD42B0D0068A51F /* Assets.xcassets */; };
 		90269FF41DD42B0D0068A51F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90269FF21DD42B0D0068A51F /* LaunchScreen.storyboard */; };
 		90269FFF1DD42B0D0068A51F /* LearningCleanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90269FFE1DD42B0D0068A51F /* LearningCleanSwiftTests.swift */; };
 		9026A00A1DD42B0D0068A51F /* LearningCleanSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0091DD42B0D0068A51F /* LearningCleanSwiftUITests.swift */; };
+		9026A02E1DD42B6F0068A51F /* CreateOrderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */; };
+		9026A02F1DD42B6F0068A51F /* CreateOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */; };
+		9026A0301DD42B6F0068A51F /* CreateOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */; };
+		9026A0311DD42B6F0068A51F /* CreateOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02A1DD42B6F0068A51F /* CreateOrderPresenter.swift */; };
+		9026A0321DD42B6F0068A51F /* CreateOrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */; };
+		9026A0331DD42B6F0068A51F /* CreateOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02C1DD42B6F0068A51F /* CreateOrderViewController.swift */; };
+		9026A0341DD42B6F0068A51F /* CreateOrderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +43,6 @@
 /* Begin PBXFileReference section */
 		90269FE31DD42B0D0068A51F /* LearningCleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningCleanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90269FE61DD42B0D0068A51F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		90269FE81DD42B0D0068A51F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		90269FEB1DD42B0D0068A51F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90269FEE1DD42B0D0068A51F /* LearningCleanSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LearningCleanSwift.xcdatamodel; sourceTree = "<group>"; };
 		90269FF01DD42B0D0068A51F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +54,13 @@
 		9026A0051DD42B0D0068A51F /* LearningCleanSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningCleanSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9026A0091DD42B0D0068A51F /* LearningCleanSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningCleanSwiftUITests.swift; sourceTree = "<group>"; };
 		9026A00B1DD42B0D0068A51F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderConfigurator.swift; sourceTree = "<group>"; };
+		9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderInteractor.swift; sourceTree = "<group>"; };
+		9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderModels.swift; sourceTree = "<group>"; };
+		9026A02A1DD42B6F0068A51F /* CreateOrderPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderPresenter.swift; sourceTree = "<group>"; };
+		9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderRouter.swift; sourceTree = "<group>"; };
+		9026A02C1DD42B6F0068A51F /* CreateOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderViewController.swift; sourceTree = "<group>"; };
+		9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +111,8 @@
 		90269FE51DD42B0D0068A51F /* LearningCleanSwift */ = {
 			isa = PBXGroup;
 			children = (
+				9026A0171DD42B1A0068A51F /* Scenes */,
 				90269FE61DD42B0D0068A51F /* AppDelegate.swift */,
-				90269FE81DD42B0D0068A51F /* ViewController.swift */,
 				90269FEA1DD42B0D0068A51F /* Main.storyboard */,
 				90269FF01DD42B0D0068A51F /* Assets.xcassets */,
 				90269FF21DD42B0D0068A51F /* LaunchScreen.storyboard */,
@@ -126,6 +138,28 @@
 				9026A00B1DD42B0D0068A51F /* Info.plist */,
 			);
 			path = LearningCleanSwiftUITests;
+			sourceTree = "<group>";
+		};
+		9026A0171DD42B1A0068A51F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9026A0181DD42B210068A51F /* CreateOrder */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		9026A0181DD42B210068A51F /* CreateOrder */ = {
+			isa = PBXGroup;
+			children = (
+				9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */,
+				9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */,
+				9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */,
+				9026A02A1DD42B6F0068A51F /* CreateOrderPresenter.swift */,
+				9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */,
+				9026A02C1DD42B6F0068A51F /* CreateOrderViewController.swift */,
+				9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */,
+			);
+			name = CreateOrder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +299,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90269FE91DD42B0D0068A51F /* ViewController.swift in Sources */,
 				90269FE71DD42B0D0068A51F /* AppDelegate.swift in Sources */,
+				9026A0331DD42B6F0068A51F /* CreateOrderViewController.swift in Sources */,
+				9026A02F1DD42B6F0068A51F /* CreateOrderInteractor.swift in Sources */,
+				9026A0301DD42B6F0068A51F /* CreateOrderModels.swift in Sources */,
+				9026A0341DD42B6F0068A51F /* CreateOrderWorker.swift in Sources */,
 				90269FEF1DD42B0D0068A51F /* LearningCleanSwift.xcdatamodeld in Sources */,
+				9026A02E1DD42B6F0068A51F /* CreateOrderConfigurator.swift in Sources */,
+				9026A0311DD42B6F0068A51F /* CreateOrderPresenter.swift in Sources */,
+				9026A0321DD42B6F0068A51F /* CreateOrderRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
