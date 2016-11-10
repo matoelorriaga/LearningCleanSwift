@@ -12,8 +12,7 @@
 		90269FEF1DD42B0D0068A51F /* LearningCleanSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90269FED1DD42B0D0068A51F /* LearningCleanSwift.xcdatamodeld */; };
 		90269FF11DD42B0D0068A51F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90269FF01DD42B0D0068A51F /* Assets.xcassets */; };
 		90269FF41DD42B0D0068A51F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90269FF21DD42B0D0068A51F /* LaunchScreen.storyboard */; };
-		90269FFF1DD42B0D0068A51F /* LearningCleanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90269FFE1DD42B0D0068A51F /* LearningCleanSwiftTests.swift */; };
-		9026A00A1DD42B0D0068A51F /* LearningCleanSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0091DD42B0D0068A51F /* LearningCleanSwiftUITests.swift */; };
+		90269FFF1DD42B0D0068A51F /* CreateOrderInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90269FFE1DD42B0D0068A51F /* CreateOrderInteractorTests.swift */; };
 		9026A02E1DD42B6F0068A51F /* CreateOrderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */; };
 		9026A02F1DD42B6F0068A51F /* CreateOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */; };
 		9026A0301DD42B6F0068A51F /* CreateOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */; };
@@ -21,17 +20,11 @@
 		9026A0321DD42B6F0068A51F /* CreateOrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */; };
 		9026A0331DD42B6F0068A51F /* CreateOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02C1DD42B6F0068A51F /* CreateOrderViewController.swift */; };
 		9026A0341DD42B6F0068A51F /* CreateOrderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */; };
+		9026A03C1DD52E040068A51F /* CreateOrderPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9026A03B1DD52E040068A51F /* CreateOrderPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		90269FFB1DD42B0D0068A51F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90269FDB1DD42B0D0068A51F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 90269FE21DD42B0D0068A51F;
-			remoteInfo = LearningCleanSwift;
-		};
-		9026A0061DD42B0D0068A51F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90269FDB1DD42B0D0068A51F /* Project object */;
 			proxyType = 1;
@@ -49,11 +42,8 @@
 		90269FF31DD42B0D0068A51F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90269FF51DD42B0D0068A51F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90269FFA1DD42B0D0068A51F /* LearningCleanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningCleanSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90269FFE1DD42B0D0068A51F /* LearningCleanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningCleanSwiftTests.swift; sourceTree = "<group>"; };
+		90269FFE1DD42B0D0068A51F /* CreateOrderInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderInteractorTests.swift; sourceTree = "<group>"; };
 		9026A0001DD42B0D0068A51F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9026A0051DD42B0D0068A51F /* LearningCleanSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningCleanSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9026A0091DD42B0D0068A51F /* LearningCleanSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningCleanSwiftUITests.swift; sourceTree = "<group>"; };
-		9026A00B1DD42B0D0068A51F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9026A0271DD42B6F0068A51F /* CreateOrderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderConfigurator.swift; sourceTree = "<group>"; };
 		9026A0281DD42B6F0068A51F /* CreateOrderInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderInteractor.swift; sourceTree = "<group>"; };
 		9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderModels.swift; sourceTree = "<group>"; };
@@ -61,6 +51,7 @@
 		9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderRouter.swift; sourceTree = "<group>"; };
 		9026A02C1DD42B6F0068A51F /* CreateOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderViewController.swift; sourceTree = "<group>"; };
 		9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderWorker.swift; sourceTree = "<group>"; };
+		9026A03B1DD52E040068A51F /* CreateOrderPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +69,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9026A0021DD42B0D0068A51F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -93,7 +77,6 @@
 			children = (
 				90269FE51DD42B0D0068A51F /* LearningCleanSwift */,
 				90269FFD1DD42B0D0068A51F /* LearningCleanSwiftTests */,
-				9026A0081DD42B0D0068A51F /* LearningCleanSwiftUITests */,
 				90269FE41DD42B0D0068A51F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,7 +86,6 @@
 			children = (
 				90269FE31DD42B0D0068A51F /* LearningCleanSwift.app */,
 				90269FFA1DD42B0D0068A51F /* LearningCleanSwiftTests.xctest */,
-				9026A0051DD42B0D0068A51F /* LearningCleanSwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,19 +107,10 @@
 		90269FFD1DD42B0D0068A51F /* LearningCleanSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				90269FFE1DD42B0D0068A51F /* LearningCleanSwiftTests.swift */,
+				9026A0391DD52DE20068A51F /* Scenes */,
 				9026A0001DD42B0D0068A51F /* Info.plist */,
 			);
 			path = LearningCleanSwiftTests;
-			sourceTree = "<group>";
-		};
-		9026A0081DD42B0D0068A51F /* LearningCleanSwiftUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9026A0091DD42B0D0068A51F /* LearningCleanSwiftUITests.swift */,
-				9026A00B1DD42B0D0068A51F /* Info.plist */,
-			);
-			path = LearningCleanSwiftUITests;
 			sourceTree = "<group>";
 		};
 		9026A0171DD42B1A0068A51F /* Scenes */ = {
@@ -158,6 +131,23 @@
 				9026A0291DD42B6F0068A51F /* CreateOrderModels.swift */,
 				9026A02B1DD42B6F0068A51F /* CreateOrderRouter.swift */,
 				9026A02D1DD42B6F0068A51F /* CreateOrderWorker.swift */,
+			);
+			name = CreateOrder;
+			sourceTree = "<group>";
+		};
+		9026A0391DD52DE20068A51F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9026A03A1DD52DEC0068A51F /* CreateOrder */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		9026A03A1DD52DEC0068A51F /* CreateOrder */ = {
+			isa = PBXGroup;
+			children = (
+				90269FFE1DD42B0D0068A51F /* CreateOrderInteractorTests.swift */,
+				9026A03B1DD52E040068A51F /* CreateOrderPresenterTests.swift */,
 			);
 			name = CreateOrder;
 			sourceTree = "<group>";
@@ -200,24 +190,6 @@
 			productReference = 90269FFA1DD42B0D0068A51F /* LearningCleanSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9026A0041DD42B0D0068A51F /* LearningCleanSwiftUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9026A0141DD42B0D0068A51F /* Build configuration list for PBXNativeTarget "LearningCleanSwiftUITests" */;
-			buildPhases = (
-				9026A0011DD42B0D0068A51F /* Sources */,
-				9026A0021DD42B0D0068A51F /* Frameworks */,
-				9026A0031DD42B0D0068A51F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9026A0071DD42B0D0068A51F /* PBXTargetDependency */,
-			);
-			name = LearningCleanSwiftUITests;
-			productName = LearningCleanSwiftUITests;
-			productReference = 9026A0051DD42B0D0068A51F /* LearningCleanSwiftUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -234,12 +206,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					90269FF91DD42B0D0068A51F = {
-						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = K2RR2SL97M;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 90269FE21DD42B0D0068A51F;
-					};
-					9026A0041DD42B0D0068A51F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = K2RR2SL97M;
 						ProvisioningStyle = Automatic;
@@ -262,7 +228,6 @@
 			targets = (
 				90269FE21DD42B0D0068A51F /* LearningCleanSwift */,
 				90269FF91DD42B0D0068A51F /* LearningCleanSwiftTests */,
-				9026A0041DD42B0D0068A51F /* LearningCleanSwiftUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -279,13 +244,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		90269FF81DD42B0D0068A51F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9026A0031DD42B0D0068A51F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -315,15 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90269FFF1DD42B0D0068A51F /* LearningCleanSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9026A0011DD42B0D0068A51F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9026A00A1DD42B0D0068A51F /* LearningCleanSwiftUITests.swift in Sources */,
+				90269FFF1DD42B0D0068A51F /* CreateOrderInteractorTests.swift in Sources */,
+				9026A03C1DD52E040068A51F /* CreateOrderPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,11 +285,6 @@
 			isa = PBXTargetDependency;
 			target = 90269FE21DD42B0D0068A51F /* LearningCleanSwift */;
 			targetProxy = 90269FFB1DD42B0D0068A51F /* PBXContainerItemProxy */;
-		};
-		9026A0071DD42B0D0068A51F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 90269FE21DD42B0D0068A51F /* LearningCleanSwift */;
-			targetProxy = 9026A0061DD42B0D0068A51F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -509,34 +455,6 @@
 			};
 			name = Release;
 		};
-		9026A0151DD42B0D0068A51F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = K2RR2SL97M;
-				INFOPLIST_FILE = LearningCleanSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = melorriaga.LearningCleanSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = LearningCleanSwift;
-			};
-			name = Debug;
-		};
-		9026A0161DD42B0D0068A51F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = K2RR2SL97M;
-				INFOPLIST_FILE = LearningCleanSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = melorriaga.LearningCleanSwiftUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = LearningCleanSwift;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -562,14 +480,6 @@
 			buildConfigurations = (
 				9026A0121DD42B0D0068A51F /* Debug */,
 				9026A0131DD42B0D0068A51F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		9026A0141DD42B0D0068A51F /* Build configuration list for PBXNativeTarget "LearningCleanSwiftUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9026A0151DD42B0D0068A51F /* Debug */,
-				9026A0161DD42B0D0068A51F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
