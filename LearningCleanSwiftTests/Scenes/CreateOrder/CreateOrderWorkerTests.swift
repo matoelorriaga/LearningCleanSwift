@@ -40,10 +40,4 @@ class CreateOrderWorkerTests: XCTestCase {
     
     // MARK: - Tests
     
-    func testSomething() {
-        // given
-        // when
-        // then
-    }
-    
 }

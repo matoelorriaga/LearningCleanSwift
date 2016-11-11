@@ -10,31 +10,29 @@
 //
 
 @testable import LearningCleanSwift
+
 import XCTest
 
-class ListOrdersWorkerTests: XCTestCase
-{
+class ListOrdersWorkerTests: XCTestCase {
+    
     // MARK: - Subject under test
     
     var sut: ListOrdersWorker!
     
     // MARK: - Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         setupListOrdersWorker()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     // MARK: - Test setup
     
-    func setupListOrdersWorker()
-    {
+    func setupListOrdersWorker() {
         sut = ListOrdersWorker()
     }
     
@@ -42,12 +40,4 @@ class ListOrdersWorkerTests: XCTestCase
     
     // MARK: - Tests
     
-    func testSomething()
-    {
-        // Given
-        
-        // When
-        
-        // Then
-    }
 }

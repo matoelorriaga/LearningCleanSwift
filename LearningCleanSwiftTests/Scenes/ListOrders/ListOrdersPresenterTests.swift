@@ -10,44 +10,90 @@
 //
 
 @testable import LearningCleanSwift
+
 import XCTest
 
-class ListOrdersPresenterTests: XCTestCase
-{
+class ListOrdersPresenterTests: XCTestCase {
+    
     // MARK: - Subject under test
     
     var sut: ListOrdersPresenter!
     
     // MARK: - Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         setupListOrdersPresenter()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     // MARK: - Test setup
     
-    func setupListOrdersPresenter()
-    {
+    func setupListOrdersPresenter() {
         sut = ListOrdersPresenter()
     }
     
     // MARK: - Test doubles
     
+    class ListOrdersPresenterOutputSpy: ListOrdersPresenterOutput {
+        
+        var displayFetchOrdersCalled = false
+        
+        var listOrdersFetchOrdersViewModel: ListOrders.FetchOrders.ViewModel!
+        
+        func displayFetchedOrders(viewModel: ListOrders.FetchOrders.ViewModel) {
+            displayFetchOrdersCalled = true
+            listOrdersFetchOrdersViewModel = viewModel
+        }
+        
+    }
+    
     // MARK: - Tests
     
-    func testSomething()
-    {
-        // Given
+    func testPresentFetchedOrdersShouldFormatFetchedOrdersForDisplay() {
+        // given
+        let listOrdersPresenterOutputSpy = ListOrdersPresenterOutputSpy()
+        sut.output = listOrdersPresenterOutputSpy
         
-        // When
+        var dateComponents = DateComponents()
+        dateComponents.year = 2007
+        dateComponents.month = 6
+        dateComponents.day = 29
+        let date = Calendar.current.date(from: dateComponents)
         
-        // Then
+        let orders = [Order(id: 1, date: date, email: "matoelorriaga@gmail.com", firstName: "Matías", lastName: "Elorriaga", total: 123.45)]
+        let response = ListOrders.FetchOrders.Response(orders: orders)
+        
+        // when
+        sut.presentFetchedOrders(response: response)
+        
+        // then
+        let displayedOrders = listOrdersPresenterOutputSpy.listOrdersFetchOrdersViewModel.displayedOrders
+        for displayedOrder in displayedOrders {
+            XCTAssertEqual(displayedOrder.id, "1")
+            XCTAssertEqual(displayedOrder.date, "6/29/07")
+            XCTAssertEqual(displayedOrder.email, "matoelorriaga@gmail.com")
+            XCTAssertEqual(displayedOrder.name, "Matías Elorriaga")
+            XCTAssertEqual(displayedOrder.total, "$123.45")
+        }
     }
+    
+    func testPresentFetchedOrdersShouldAskViewControllerToDisplayFetchedOrders() {
+        // given
+        let listOrdersPresenterOutputSpy = ListOrdersPresenterOutputSpy()
+        sut.output = listOrdersPresenterOutputSpy
+        
+        let orders = [Order(id: Int(1), date: Date(), email: "matoelorriaga@gmail.com", firstName: "Matías", lastName: "Elorriaga", total: 123.45)]
+        let response = ListOrders.FetchOrders.Response(orders: orders)
+        
+        // when
+        sut.presentFetchedOrders(response: response)
+        
+        // then
+        XCTAssert(listOrdersPresenterOutputSpy.displayFetchOrdersCalled)
+    }
+    
 }

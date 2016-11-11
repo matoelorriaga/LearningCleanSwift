@@ -10,44 +10,71 @@
 //
 
 @testable import LearningCleanSwift
+
 import XCTest
 
-class ListOrdersInteractorTests: XCTestCase
-{
+class ListOrdersInteractorTests: XCTestCase {
+    
     // MARK: - Subject under test
     
     var sut: ListOrdersInteractor!
     
     // MARK: - Test lifecycle
     
-    override func setUp()
-    {
+    override func setUp() {
         super.setUp()
         setupListOrdersInteractor()
     }
     
-    override func tearDown()
-    {
+    override func tearDown() {
         super.tearDown()
     }
     
     // MARK: - Test setup
     
-    func setupListOrdersInteractor()
-    {
+    func setupListOrdersInteractor() {
         sut = ListOrdersInteractor()
     }
     
     // MARK: - Test doubles
     
+    class ListOrdersInteractorOutputSpy: ListOrdersInteractorOutput {
+        
+        var presentFetchedOrdersCalled = false
+        
+        func presentFetchedOrders(response: ListOrders.FetchOrders.Response) {
+            presentFetchedOrdersCalled = true
+        }
+        
+    }
+    
+    class OrdersWorkerSpy: OrdersWorker {
+        
+        var fetchOrdersCalled = false
+        
+        override func fetchOrders(completionHandler: @escaping ([Order]) -> Void) {
+            fetchOrdersCalled = true
+            completionHandler([])
+        }
+        
+    }
+    
     // MARK: - Tests
     
-    func testSomething()
-    {
-        // Given
+    func testFetchOrdersShouldAskOrdersWorkerToFetchOrdersAndPresenterToFormatResult() {
+        // given
+        let listOrdersInteractorOutputSpy = ListOrdersInteractorOutputSpy()
+        sut.output = listOrdersInteractorOutputSpy
+        let ordersWorkerSpy = OrdersWorkerSpy(ordersStore: OrdersMemStore())
+        sut.ordersWorker = ordersWorkerSpy
         
-        // When
+        // when
+        let request = ListOrders.FetchOrders.Request()
+        sut.fetchOrders(request: request)
         
-        // Then
+        // then
+        XCTAssert(ordersWorkerSpy.fetchOrdersCalled)
+        XCTAssert(listOrdersInteractorOutputSpy.presentFetchedOrdersCalled)
     }
+    
 }

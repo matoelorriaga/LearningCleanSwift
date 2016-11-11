@@ -11,19 +11,17 @@
 
 import UIKit
 
-protocol ListOrdersRouterInput
-{
+protocol ListOrdersRouterInput {
     func navigateToSomewhere()
 }
 
-class ListOrdersRouter: ListOrdersRouterInput
-{
+class ListOrdersRouter: ListOrdersRouterInput {
+    
     weak var viewController: ListOrdersViewController!
     
     // MARK: - Navigation
     
-    func navigateToSomewhere()
-    {
+    func navigateToSomewhere() {
         // NOTE: Teach the router how to navigate to another scene. Some examples follow:
         
         // 1. Trigger a storyboard segue
@@ -43,8 +41,7 @@ class ListOrdersRouter: ListOrdersRouterInput
     
     // MARK: - Communication
     
-    func passDataToNextScene(segue: UIStoryboardSegue)
-    {
+    func passDataToNextScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
         
         if segue.identifier == "ShowSomewhereScene" {
@@ -52,11 +49,11 @@ class ListOrdersRouter: ListOrdersRouterInput
         }
     }
     
-    func passDataToSomewhereScene(segue: UIStoryboardSegue)
-    {
+    func passDataToSomewhereScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router how to pass data to the next scene
         
         // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController
         // someWhereViewController.output.name = viewController.output.name
     }
+    
 }

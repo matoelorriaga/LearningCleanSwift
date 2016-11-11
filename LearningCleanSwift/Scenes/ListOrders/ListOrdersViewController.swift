@@ -11,53 +11,65 @@
 
 import UIKit
 
-protocol ListOrdersViewControllerInput
-{
-    func displaySomething(viewModel: ListOrders.Something.ViewModel)
+protocol ListOrdersViewControllerInput {
+    func displayFetchedOrders(viewModel: ListOrders.FetchOrders.ViewModel)
 }
 
-protocol ListOrdersViewControllerOutput
-{
-    func doSomething(request: ListOrders.Something.Request)
+protocol ListOrdersViewControllerOutput {
+    func fetchOrders(request: ListOrders.FetchOrders.Request)
 }
 
-class ListOrdersViewController: UITableViewController, ListOrdersViewControllerInput
-{
+class ListOrdersViewController: UITableViewController, ListOrdersViewControllerInput {
+    
     var output: ListOrdersViewControllerOutput!
     var router: ListOrdersRouter!
     
+    var displayedOrders: [ListOrders.FetchOrders.ViewModel.DisplayedOrder] = []
+    
     // MARK: - Object lifecycle
     
-    override func awakeFromNib()
-    {
+    override func awakeFromNib() {
         super.awakeFromNib()
         ListOrdersConfigurator.sharedInstance.configure(viewController: self)
     }
     
+    // MARK: - UITableViewDataSource
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayedOrders.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let displayedOrder = displayedOrders[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTableViewCell", for: indexPath)
+        cell.textLabel?.text = displayedOrder.date
+        cell.detailTextLabel?.text = displayedOrder.total
+        return cell
+    }
+    
     // MARK: - View lifecycle
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        doSomethingOnLoad()
+        fetchOrdersOnLoad()
     }
     
-    // MARK: - Event handling
+    // MARK: - Do something on load
     
-    func doSomethingOnLoad()
-    {
-        // NOTE: Ask the Interactor to do some work
-        
-        let request = ListOrders.Something.Request()
-        output.doSomething(request: request)
+    func fetchOrdersOnLoad() {
+        let request = ListOrders.FetchOrders.Request()
+        output.fetchOrders(request: request)
     }
     
-    // MARK: - Display logic
+    // MARK: - Display something
     
-    func displaySomething(viewModel: ListOrders.Something.ViewModel)
-    {
-        // NOTE: Display the result from the Presenter
-        
-        // nameTextField.text = viewModel.name
+    func displayFetchedOrders(viewModel: ListOrders.FetchOrders.ViewModel) {
+        displayedOrders = viewModel.displayedOrders
+        tableView.reloadData()
     }
+    
 }

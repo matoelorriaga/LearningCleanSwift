@@ -11,33 +11,26 @@
 
 import UIKit
 
-protocol ListOrdersInteractorInput
-{
-    func doSomething(request: ListOrders.Something.Request)
+protocol ListOrdersInteractorInput {
+    func fetchOrders(request: ListOrders.FetchOrders.Request)
 }
 
-protocol ListOrdersInteractorOutput
-{
-    func presentSomething(response: ListOrders.Something.Response)
+protocol ListOrdersInteractorOutput {
+    func presentFetchedOrders(response: ListOrders.FetchOrders.Response)
 }
 
-class ListOrdersInteractor: ListOrdersInteractorInput
-{
+class ListOrdersInteractor: ListOrdersInteractorInput {
+    
     var output: ListOrdersInteractorOutput!
-    var worker: ListOrdersWorker!
+    var ordersWorker = OrdersWorker(ordersStore: OrdersMemStore())
     
     // MARK: - Business logic
     
-    func doSomething(request: ListOrders.Something.Request)
-    {
-        // NOTE: Create some Worker to do the work
-        
-        worker = ListOrdersWorker()
-        worker.doSomeWork()
-        
-        // NOTE: Pass the result to the Presenter
-        
-        let response = ListOrders.Something.Response()
-        output.presentSomething(response: response)
+    func fetchOrders(request: ListOrders.FetchOrders.Request) {
+        ordersWorker.fetchOrders { orders in
+            let response = ListOrders.FetchOrders.Response(orders: orders)
+            self.output.presentFetchedOrders(response: response)
+        }
     }
+    
 }

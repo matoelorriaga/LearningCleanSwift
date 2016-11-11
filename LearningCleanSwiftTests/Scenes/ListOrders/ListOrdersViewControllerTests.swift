@@ -10,6 +10,7 @@
 //
 
 @testable import LearningCleanSwift
+
 import XCTest
 
 class ListOrdersViewControllerTests: XCTestCase {
@@ -39,7 +40,6 @@ class ListOrdersViewControllerTests: XCTestCase {
         let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         sut = storyboard.instantiateViewController(withIdentifier: "ListOrdersViewController") as! ListOrdersViewController
-        loadView()
     }
     
     func loadView() {
@@ -49,12 +49,91 @@ class ListOrdersViewControllerTests: XCTestCase {
     
     // MARK: - Test doubles
     
+    class ListOrdersViewControllerOutputSpy: ListOrdersViewControllerOutput {
+        
+        var fetchOrdersCalled = false
+        
+        func fetchOrders(request: ListOrders.FetchOrders.Request) {
+            fetchOrdersCalled = true
+        }
+        
+    }
+    
+    class TableViewSpy: UITableView {
+        
+        var reloadDataCalled = false
+        
+        override func reloadData() {
+            reloadDataCalled = true
+        }
+        
+    }
+    
     // MARK: - Tests
     
-    func testSomething() {
+    func testNumberOfSectionsInTableViewShouldAlwaysBeOne() {
         // given
+        let tableView = sut.tableView!
+        
         // when
+        let numberOfSections = sut.numberOfSections(in: tableView)
+        
         // then
+        XCTAssertEqual(numberOfSections, 1)
+    }
+    
+    func testNumberOfRowsShouldBeEqualToNumberOfOrdersToDisplay() {
+        // given
+        let tableView = sut.tableView!
+        let displayedOrders = [ListOrders.FetchOrders.ViewModel.DisplayedOrder(id: "1", date: "6/29/07", email: "matoelorriaga@gmail.com", name: "Matías Elorriaga", total: "$ 123.45")]
+        sut.displayedOrders = displayedOrders
+        
+        // when
+        let numberOfRows = sut.tableView(tableView, numberOfRowsInSection: 0)
+        
+        // then
+        XCTAssertEqual(numberOfRows, displayedOrders.count)
+    }
+    
+    func testShouldConfigureTableViewCellToDisplayOrder() {
+        // given
+        let tableView = sut.tableView!
+        let displayedOrders = [ListOrders.FetchOrders.ViewModel.DisplayedOrder(id: "1", date: "6/29/07", email: "matoelorriaga@gmail.com", name: "Matías Elorriaga", total: "$ 123.45")]
+        sut.displayedOrders = displayedOrders
+        
+        // when
+        let cell = sut.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+
+        // then
+        XCTAssertEqual(cell.textLabel?.text, "6/29/07")
+        XCTAssertEqual(cell.detailTextLabel?.text, "$ 123.45")
+    }
+    
+    func testShouldFetchOrdersWhenViewIsLoaded() {
+        // given
+        let listOrdersViewControllerOutputSpy = ListOrdersViewControllerOutputSpy()
+        sut.output = listOrdersViewControllerOutputSpy
+        
+        // when
+        loadView()
+        
+        // then
+        XCTAssert(listOrdersViewControllerOutputSpy.fetchOrdersCalled)
+    }
+    
+    func testShouldDisplayFetchedOrders() {
+        // given
+        let tableViewSpy = TableViewSpy()
+        sut.tableView = tableViewSpy
+        
+        let displayedOrders = [ListOrders.FetchOrders.ViewModel.DisplayedOrder(id: "1", date: "6/29/07", email: "matoelorriaga@gmail.com", name: "Matías Elorriaga", total: "$ 123.45")]
+        let viewModel = ListOrders.FetchOrders.ViewModel(displayedOrders: displayedOrders)
+        
+        // when
+        sut.displayFetchedOrders(viewModel: viewModel)
+        
+        // then
+        XCTAssert(tableViewSpy.reloadDataCalled)
     }
     
 }

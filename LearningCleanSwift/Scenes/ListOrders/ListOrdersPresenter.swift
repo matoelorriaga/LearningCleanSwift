@@ -11,27 +11,42 @@
 
 import UIKit
 
-protocol ListOrdersPresenterInput
-{
-    func presentSomething(response: ListOrders.Something.Response)
+protocol ListOrdersPresenterInput {
+    func presentFetchedOrders(response: ListOrders.FetchOrders.Response)
 }
 
-protocol ListOrdersPresenterOutput: class
-{
-    func displaySomething(viewModel: ListOrders.Something.ViewModel)
+protocol ListOrdersPresenterOutput: class {
+    func displayFetchedOrders(viewModel: ListOrders.FetchOrders.ViewModel)
 }
 
-class ListOrdersPresenter: ListOrdersPresenterInput
-{
+class ListOrdersPresenter: ListOrdersPresenterInput {
+    
     weak var output: ListOrdersPresenterOutput!
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
+    let currencyConverter: NumberFormatter = {
+        let currencyConverter = NumberFormatter()
+        currencyConverter.numberStyle = .currency
+        return currencyConverter
+    }()
     
     // MARK: - Presentation logic
     
-    func presentSomething(response: ListOrders.Something.Response)
-    {
-        // NOTE: Format the response from the Interactor and pass the result back to the View Controller
-        
-        let viewModel = ListOrders.Something.ViewModel()
-        output.displaySomething(viewModel: viewModel)
+    func presentFetchedOrders(response: ListOrders.FetchOrders.Response) {
+        var displayedOrders: [ListOrders.FetchOrders.ViewModel.DisplayedOrder] = []
+        for order in response.orders {
+            let date = dateFormatter.string(from: order.date!)
+            let total = currencyConverter.string(from: NSNumber(floatLiteral: order.total!))
+            let displayedOrder = ListOrders.FetchOrders.ViewModel.DisplayedOrder(id: String(order.id!), date: date, email: order.email!, name: "\(order.firstName!) \(order.lastName!)", total: total!)
+            displayedOrders.append(displayedOrder)
+        }
+        let viewModel = ListOrders.FetchOrders.ViewModel(displayedOrders: displayedOrders)
+        output.displayFetchedOrders(viewModel: viewModel)
     }
+    
 }

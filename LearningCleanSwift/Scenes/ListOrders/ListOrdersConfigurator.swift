@@ -13,24 +13,20 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension ListOrdersViewController: ListOrdersPresenterOutput
-{
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+extension ListOrdersViewController: ListOrdersPresenterOutput {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue: segue)
     }
 }
 
-extension ListOrdersInteractor: ListOrdersViewControllerOutput
-{
+extension ListOrdersInteractor: ListOrdersViewControllerOutput {
 }
 
-extension ListOrdersPresenter: ListOrdersInteractorOutput
-{
+extension ListOrdersPresenter: ListOrdersInteractorOutput {
 }
 
-class ListOrdersConfigurator
-{
+class ListOrdersConfigurator {
+    
     // MARK: - Object lifecycle
     
     static let sharedInstance = ListOrdersConfigurator()
@@ -39,8 +35,7 @@ class ListOrdersConfigurator
     
     // MARK: - Configuration
     
-    func configure(viewController: ListOrdersViewController)
-    {
+    func configure(viewController: ListOrdersViewController) {
         let router = ListOrdersRouter()
         router.viewController = viewController
         
@@ -53,4 +48,5 @@ class ListOrdersConfigurator
         viewController.output = interactor
         viewController.router = router
     }
+    
 }

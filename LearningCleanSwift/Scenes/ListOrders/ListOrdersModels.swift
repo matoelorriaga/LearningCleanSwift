@@ -11,18 +11,30 @@
 
 import UIKit
 
-struct ListOrders
-{
-    struct Something
-    {
-        struct Request
-        {
+struct ListOrders {
+    
+    struct FetchOrders {
+        
+        struct Request {}
+        
+        struct Response {
+            var orders: [Order]
         }
-        struct Response
-        {
+        
+        struct ViewModel {
+            
+            struct DisplayedOrder {
+                var id: String
+                var date: String
+                var email: String
+                var name: String
+                var total: String
+            }
+            
+            var displayedOrders: [DisplayedOrder]
+            
         }
-        struct ViewModel
-        {
-        }
+        
     }
+    
 }
