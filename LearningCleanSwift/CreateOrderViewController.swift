@@ -92,18 +92,18 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomethingOnLoad()
+        configureViews()
     }
     
-    func expirationDatePickerValueChanged(datePicker: UIDatePicker) {
-        let date = datePicker.date
+    func expirationDatePickerValueChanged() {
+        let date = expirationDatePicker.date
         let request = CreateOrder.FormatExpirationDate.Request(date: date)
         output.formatExpirationDate(request: request)
     }
     
     // MARK: - Do something on load
     
-    func doSomethingOnLoad() {
+    func configureViews() {
         // NOTE: Ask the Interactor to do some work
         
         for textField in textFields {
@@ -114,7 +114,7 @@ class CreateOrderViewController: UITableViewController, CreateOrderViewControlle
         shippingMethodTextField.inputView = shippingMethodPicker
         
         expirationDatePicker.datePickerMode = .date
-        expirationDatePicker.addTarget(self, action: #selector(CreateOrderViewController.expirationDatePickerValueChanged(datePicker:)), for: .valueChanged)
+        expirationDatePicker.addTarget(self, action: #selector(CreateOrderViewController.expirationDatePickerValueChanged), for: .valueChanged)
         expirationDateTextField.inputView = expirationDatePicker
     }
     
