@@ -9,9 +9,9 @@
 //  clean architecture to your iOS and Mac projects, see http://clean-swift.com
 //
 
-import XCTest
-
 @testable import LearningCleanSwift
+
+import XCTest
 
 class CreateOrderPresenterTests: XCTestCase {
     

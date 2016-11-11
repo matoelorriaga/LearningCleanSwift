@@ -9,9 +9,9 @@
 //  clean architecture to your iOS and Mac projects, see http://clean-swift.com
 //
 
-import XCTest
-
 @testable import LearningCleanSwift
+
+import XCTest
 
 class CreateOrderViewControllerTests: XCTestCase {
     
@@ -40,10 +40,10 @@ class CreateOrderViewControllerTests: XCTestCase {
         let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         sut = storyboard.instantiateViewController(withIdentifier: "CreateOrderViewController") as! CreateOrderViewController
-        addViewToWindow()
+        loadView()
     }
     
-    func addViewToWindow() {
+    func loadView() {
         window.addSubview(sut.view)
         RunLoop.current.run(until: Date())
     }
